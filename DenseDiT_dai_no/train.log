@@ -1,0 +1,307 @@
+Using config: train/config/config_densedit_stage2.yaml
+/opt/conda/envs/torch-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+W1005 21:28:30.468000 295349 site-packages/torch/distributed/run.py:774] 
+W1005 21:28:30.468000 295349 site-packages/torch/distributed/run.py:774] *****************************************
+W1005 21:28:30.468000 295349 site-packages/torch/distributed/run.py:774] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1005 21:28:30.468000 295349 site-packages/torch/distributed/run.py:774] *****************************************
+/opt/conda/envs/torch-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/opt/conda/envs/torch-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+================================================================================
+Configurations:
+{
+  "model": {
+    "flux_path": "/root/siton-data-51d3ce9aba3246f88f64ea65f79d5133/models/Flux-Kontext",
+    "model_dtype": "float32",
+    "mixed_precision": "bfloat16",
+    "use_lora": false,
+    "train_transformer": true
+  },
+  "train": {
+    "allow_tf32": true,
+    "batch_size": 1,
+    "accumulate_grad_batches": 1,
+    "dataloader_workers": 8,
+    "image_size": [
+      512,
+      512
+    ],
+    "image_dir": "/root/siton-data-51d3ce9aba3246f88f64ea65f79d5133/rectify/pairs",
+    "condition_dir": "/root/siton-data-51d3ce9aba3246f88f64ea65f79d5133/rectify/pairs_pf",
+    "context_file": "/root/siton-data-51d3ce9aba3246f88f64ea65f79d5133/rectify/pairs",
+    "description_file": "/root/siton-data-51d3ce9aba3246f88f64ea65f79d5133/rectify/image_descriptions.txt",
+    "max_steps": -1,
+    "max_epochs": -1,
+    "gradient_checkpointing": true,
+    "gradient_clip_val": 1.0,
+    "optimizer": {
+      "type": "AdamW",
+      "params": {
+        "lr": 0.0001,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08
+      },
+      "weight_decay": 0.01
+    },
+    "save_path": "./output",
+    "save_every_n_steps": 1000,
+    "log_every_n_steps": 5,
+    "save_interval": 5000,
+    "sample_interval": 20,
+    "wandb": {
+      "enabled": true,
+      "project": "DenseDiT"
+    }
+  },
+  "deepspeed": {
+    "zero_stage": 3,
+    "offload": "none",
+    "overlap_comm": true,
+    "contiguous_gradients": true,
+    "wall_clock_breakdown": false,
+    "steps_per_print": 10
+  }
+}
+================================================================================
+Training Configuration:
+  Rank: 0/2
+  Run name: 20251005-212846
+  Model path: /root/siton-data-51d3ce9aba3246f88f64ea65f79d5133/models/Flux-Kontext
+  Model dtype: float32
+  Mixed precision: bfloat16
+  Batch size per GPU: 1
+  Gradient accumulation: 1
+  Effective batch size: 2
+  DeepSpeed ZeRO Stage: 3
+  Offload strategy: none
+  Training precision: BF16 mixed
+  Gradient checkpointing: True
+================================================================================
+Dataset length: 50
+Initializing DenseDiTModel...
+  dtype: torch.float32
+  gradient_checkpointing: True
+Loading FluxKontext pipeline from /root/siton-data-51d3ce9aba3246f88f64ea65f79d5133/models/Flux-Kontext...
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Initializing DenseDiTModel...
+  dtype: torch.float32
+  gradient_checkpointing: True
+Loading FluxKontext pipeline from /root/siton-data-51d3ce9aba3246f88f64ea65f79d5133/models/Flux-Kontext...
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]`torch_dtype` is deprecated! Use `dtype` instead!
+Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:00,  7.43it/s]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s][ALoading pipeline components...:  14%|█▍        | 1/7 [00:00<00:01,  3.13it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:03<00:03,  3.57s/it][A
+Loading checkpoint shards:  33%|███▎      | 1/3 [00:08<00:16,  8.22s/it][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:08<00:00,  4.36s/it][ALoading checkpoint shards: 100%|██████████| 2/2 [00:08<00:00,  4.24s/it]
+Loading pipeline components...:  43%|████▎     | 3/7 [00:08<00:13,  3.26s/it]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s][A
+Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:22, 11.25s/it][A
+Loading checkpoint shards:  67%|██████▋   | 2/3 [00:20<00:10, 10.43s/it][A
+Loading checkpoint shards: 100%|██████████| 3/3 [00:24<00:00,  7.48s/it][ALoading checkpoint shards: 100%|██████████| 3/3 [00:24<00:00,  8.05s/it]
+Loading pipeline components...:  29%|██▊       | 2/7 [00:24<01:11, 14.36s/it]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading pipeline components...:  43%|████▎     | 3/7 [00:24<00:31,  7.99s/it]`torch_dtype` is deprecated! Use `dtype` instead!
+Loading pipeline components...:  71%|███████▏  | 5/7 [00:25<00:07,  3.58s/it]Loading pipeline components...:  86%|████████▌ | 6/7 [00:25<00:02,  2.63s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:06<00:06,  6.16s/it][A
+Loading checkpoint shards:  67%|██████▋   | 2/3 [00:23<00:11, 11.60s/it][A
+Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  8.45s/it][ALoading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.26s/it]
+Loading pipeline components...:  57%|█████▋    | 4/7 [00:36<00:35, 11.79s/it]Loading pipeline components...:  71%|███████▏  | 5/7 [00:36<00:15,  7.94s/it]Loading pipeline components...:  86%|████████▌ | 6/7 [00:37<00:05,  5.48s/it]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading pipeline components...: 100%|██████████| 7/7 [00:37<00:00,  3.89s/it]Loading pipeline components...: 100%|██████████| 7/7 [00:37<00:00,  5.38s/it]
+  Gradient checkpointing enabled
+Freezing non-trainable components...
+
+Loading checkpoint shards: 100%|██████████| 2/2 [00:12<00:00,  6.00s/it][ALoading checkpoint shards: 100%|██████████| 2/2 [00:12<00:00,  6.03s/it]
+Loading pipeline components...: 100%|██████████| 7/7 [00:37<00:00,  5.40s/it]Loading pipeline components...: 100%|██████████| 7/7 [00:37<00:00,  5.39s/it]
+  Gradient checkpointing enabled
+Freezing non-trainable components...
+Setting up trainable parameters...
+Trainable parameters: 6,456,794,624 / 11,901,408,320 (54.25%)
+DenseDiTModel initialized successfully
+Model parameter on  cpu
+Starting training with DeepSpeed ZeRO Stage 3 (offload: none)...
+initializing deepspeed distributed: GLOBAL_RANK: 1, MEMBER: 2/2
+Setting up trainable parameters...
+Trainable parameters: 6,456,794,624 / 11,901,408,320 (54.25%)
+DenseDiTModel initialized successfully
+Model parameter on  cpu
+💡 Tip: For seamless cloud uploads and versioning, try installing [litmodels](https://pypi.org/project/litmodels/) to enable LitModelCheckpoint, which syncs automatically with the Lightning model registry.
+Trainer already configured with model summary callbacks: [<class 'lightning.pytorch.callbacks.model_summary.ModelSummary'>]. Skipping setting a default `ModelSummary` callback.
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+/opt/conda/envs/torch-env/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/logger_connector/logger_connector.py:76: Starting from v1.9.0, `tensorboardX` has been removed as a dependency of the `lightning.pytorch` package, due to potential conflicts with other packages in the ML ecosystem. For this reason, `logger=True` will use `CSVLogger` as the default logger, unless the `tensorboard` or `tensorboardX` packages are found. Please `pip install lightning[extra]` or one of them to enable TensorBoard support by default
+Starting training with DeepSpeed ZeRO Stage 3 (offload: none)...
+initializing deepspeed distributed: GLOBAL_RANK: 0, MEMBER: 1/2
+70e00f7e8c2a:295442:295442 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to eth0
+70e00f7e8c2a:295442:295442 [0] NCCL INFO Bootstrap: Using eth0:172.17.0.2<0>
+70e00f7e8c2a:295442:295442 [0] NCCL INFO cudaDriverVersion 12080
+70e00f7e8c2a:295442:295442 [0] NCCL INFO NCCL version 2.27.3+cuda12.9
+70e00f7e8c2a:295442:295442 [0] NCCL INFO Comm config Blocking set to 1
+70e00f7e8c2a:295443:295443 [1] NCCL INFO cudaDriverVersion 12080
+70e00f7e8c2a:295443:295443 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to eth0
+70e00f7e8c2a:295443:295443 [1] NCCL INFO Bootstrap: Using eth0:172.17.0.2<0>
+70e00f7e8c2a:295443:295443 [1] NCCL INFO NCCL version 2.27.3+cuda12.9
+70e00f7e8c2a:295443:295443 [1] NCCL INFO Comm config Blocking set to 1
+70e00f7e8c2a:295443:295663 [1] NCCL INFO NET/Plugin: Could not find: libnccl-net.so. 
+70e00f7e8c2a:295443:295663 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+70e00f7e8c2a:295443:295663 [1] NCCL INFO Failed to open libibverbs.so[.1]
+70e00f7e8c2a:295443:295663 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to eth0
+70e00f7e8c2a:295443:295663 [1] NCCL INFO NET/Socket : Using [0]eth0:172.17.0.2<0>
+70e00f7e8c2a:295443:295663 [1] NCCL INFO Initialized NET plugin Socket
+70e00f7e8c2a:295443:295663 [1] NCCL INFO Assigned NET plugin Socket to comm
+70e00f7e8c2a:295443:295663 [1] NCCL INFO Using network Socket
+70e00f7e8c2a:295443:295663 [1] NCCL INFO ncclCommInitRankConfig comm 0x155a2340 rank 1 nranks 2 cudaDev 1 nvmlDev 1 busId 6000 commId 0xa52b7effd656f980 - Init START
+70e00f7e8c2a:295442:295662 [0] NCCL INFO NET/Plugin: Could not find: libnccl-net.so. 
+70e00f7e8c2a:295442:295662 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+70e00f7e8c2a:295442:295662 [0] NCCL INFO Failed to open libibverbs.so[.1]
+70e00f7e8c2a:295442:295662 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to eth0
+70e00f7e8c2a:295442:295662 [0] NCCL INFO NET/Socket : Using [0]eth0:172.17.0.2<0>
+70e00f7e8c2a:295442:295662 [0] NCCL INFO Initialized NET plugin Socket
+70e00f7e8c2a:295442:295662 [0] NCCL INFO Assigned NET plugin Socket to comm
+70e00f7e8c2a:295442:295662 [0] NCCL INFO Using network Socket
+70e00f7e8c2a:295442:295662 [0] NCCL INFO ncclCommInitRankConfig comm 0x25496730 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 5000 commId 0xa52b7effd656f980 - Init START
+70e00f7e8c2a:295442:295662 [0] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+70e00f7e8c2a:295443:295663 [1] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+70e00f7e8c2a:295442:295662 [0] NCCL INFO Bootstrap timings total 0.034903 (create 0.000039, send 0.016710, recv 0.000277, ring 0.016314, delay 0.000002)
+70e00f7e8c2a:295443:295663 [1] NCCL INFO Bootstrap timings total 0.048084 (create 0.000037, send 0.000171, recv 0.030068, ring 0.000927, delay 0.000002)
+70e00f7e8c2a:295443:295663 [1] NCCL INFO Setting affinity for GPU 1 to 0-7,64-71
+70e00f7e8c2a:295442:295662 [0] NCCL INFO Setting affinity for GPU 0 to 0-7,64-71
+70e00f7e8c2a:295442:295662 [0] NCCL INFO comm 0x25496730 rank 0 nRanks 2 nNodes 1 localRanks 2 localRank 0 MNNVL 0
+70e00f7e8c2a:295443:295663 [1] NCCL INFO comm 0x155a2340 rank 1 nRanks 2 nNodes 1 localRanks 2 localRank 1 MNNVL 0
+70e00f7e8c2a:295442:295662 [0] NCCL INFO Channel 00/04 : 0 1
+70e00f7e8c2a:295442:295662 [0] NCCL INFO Channel 01/04 : 0 1
+70e00f7e8c2a:295442:295662 [0] NCCL INFO Channel 02/04 : 0 1
+70e00f7e8c2a:295442:295662 [0] NCCL INFO Channel 03/04 : 0 1
+70e00f7e8c2a:295442:295662 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] -1/-1/-1->0->1 [2] 1/-1/-1->0->-1 [3] -1/-1/-1->0->1
+70e00f7e8c2a:295443:295663 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] 0/-1/-1->1->-1 [2] -1/-1/-1->1->0 [3] 0/-1/-1->1->-1
+70e00f7e8c2a:295442:295662 [0] NCCL INFO P2P Chunksize set to 131072
+70e00f7e8c2a:295443:295663 [1] NCCL INFO P2P Chunksize set to 131072
+70e00f7e8c2a:295442:295662 [0] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+70e00f7e8c2a:295443:295663 [1] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+70e00f7e8c2a:295442:295662 [0] NCCL INFO Check P2P Type isAllDirectP2p 1 directMode 0
+70e00f7e8c2a:295442:295667 [0] NCCL INFO [Proxy Service] Device 0 CPU core 7
+70e00f7e8c2a:295443:295666 [1] NCCL INFO [Proxy Service] Device 1 CPU core 68
+70e00f7e8c2a:295442:295669 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 5
+70e00f7e8c2a:295443:295668 [1] NCCL INFO [Proxy Service UDS] Device 1 CPU core 0
+70e00f7e8c2a:295443:295663 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+70e00f7e8c2a:295443:295663 [1] NCCL INFO 4 coll channels, 4 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+70e00f7e8c2a:295442:295662 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+70e00f7e8c2a:295442:295662 [0] NCCL INFO 4 coll channels, 4 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+70e00f7e8c2a:295442:295662 [0] NCCL INFO CC Off, workFifoBytes 1048576
+70e00f7e8c2a:295442:295662 [0] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+70e00f7e8c2a:295443:295663 [1] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+70e00f7e8c2a:295442:295662 [0] NCCL INFO ncclCommInitRankConfig comm 0x25496730 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 5000 commId 0xa52b7effd656f980 - Init COMPLETE
+70e00f7e8c2a:295443:295663 [1] NCCL INFO ncclCommInitRankConfig comm 0x155a2340 rank 1 nranks 2 cudaDev 1 nvmlDev 1 busId 6000 commId 0xa52b7effd656f980 - Init COMPLETE
+70e00f7e8c2a:295442:295662 [0] NCCL INFO Init timings - ncclCommInitRankConfig: rank 0 nranks 2 total 0.25 (kernels 0.19, alloc 0.00, bootstrap 0.03, allgathers 0.01, topo 0.01, graphs 0.00, connections 0.00, rest 0.00)
+70e00f7e8c2a:295443:295663 [1] NCCL INFO Init timings - ncclCommInitRankConfig: rank 1 nranks 2 total 0.25 (kernels 0.18, alloc 0.00, bootstrap 0.05, allgathers 0.01, topo 0.01, graphs 0.00, connections 0.00, rest 0.00)
+70e00f7e8c2a:295443:295670 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM
+70e00f7e8c2a:295443:295670 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM
+70e00f7e8c2a:295442:295671 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM
+70e00f7e8c2a:295443:295670 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/CUMEM
+70e00f7e8c2a:295442:295671 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/CUMEM
+70e00f7e8c2a:295443:295670 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/CUMEM
+70e00f7e8c2a:295442:295671 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/CUMEM
+70e00f7e8c2a:295442:295671 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[1] via P2P/CUMEM
+70e00f7e8c2a:295442:295671 [0] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+70e00f7e8c2a:295443:295670 [1] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]
+LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1]
+Configuring optimizers...
+Configuring optimizers...
+Number of trainable parameters: 608Number of trainable parameters: 608
+
+Optimizer configured: AdamWOptimizer configured: AdamW
+
+70e00f7e8c2a:295443:295443 [1] NCCL INFO Comm config Blocking set to 1
+70e00f7e8c2a:295442:295442 [0] NCCL INFO Comm config Blocking set to 1
+70e00f7e8c2a:295442:295678 [0] NCCL INFO Assigned NET plugin Socket to comm
+70e00f7e8c2a:295442:295678 [0] NCCL INFO Using network Socket
+70e00f7e8c2a:295443:295675 [1] NCCL INFO Assigned NET plugin Socket to comm
+70e00f7e8c2a:295443:295675 [1] NCCL INFO Using network Socket
+70e00f7e8c2a:295442:295678 [0] NCCL INFO ncclCommSplit comm 0x26d569b0 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 5000 parent 0x25496730 splitCount 1 color 2130503744 key 0- Init START
+70e00f7e8c2a:295443:295675 [1] NCCL INFO ncclCommSplit comm 0x210637c0 rank 1 nranks 2 cudaDev 1 nvmlDev 1 busId 6000 parent 0x155a2340 splitCount 1 color 2130503744 key 1- Init START
+70e00f7e8c2a:295443:295675 [1] NCCL INFO Setting affinity for GPU 1 to 0-7,64-71
+70e00f7e8c2a:295442:295678 [0] NCCL INFO Setting affinity for GPU 0 to 0-7,64-71
+70e00f7e8c2a:295442:295678 [0] NCCL INFO comm 0x26d569b0 rank 0 nRanks 2 nNodes 1 localRanks 2 localRank 0 MNNVL 0
+70e00f7e8c2a:295443:295675 [1] NCCL INFO comm 0x210637c0 rank 1 nRanks 2 nNodes 1 localRanks 2 localRank 1 MNNVL 0
+70e00f7e8c2a:295442:295678 [0] NCCL INFO Channel 00/04 : 0 1
+70e00f7e8c2a:295442:295678 [0] NCCL INFO Channel 01/04 : 0 1
+70e00f7e8c2a:295443:295675 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] 0/-1/-1->1->-1 [2] -1/-1/-1->1->0 [3] 0/-1/-1->1->-1
+70e00f7e8c2a:295442:295678 [0] NCCL INFO Channel 02/04 : 0 1
+70e00f7e8c2a:295443:295675 [1] NCCL INFO P2P Chunksize set to 131072
+70e00f7e8c2a:295442:295678 [0] NCCL INFO Channel 03/04 : 0 1
+70e00f7e8c2a:295442:295678 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] -1/-1/-1->0->1 [2] 1/-1/-1->0->-1 [3] -1/-1/-1->0->1
+70e00f7e8c2a:295442:295678 [0] NCCL INFO P2P Chunksize set to 131072
+70e00f7e8c2a:295442:295678 [0] NCCL INFO Check P2P Type isAllDirectP2p 1 directMode 0
+70e00f7e8c2a:295442:295679 [0] NCCL INFO [Proxy Service] Device 0 CPU core 5
+70e00f7e8c2a:295443:295680 [1] NCCL INFO [Proxy Service] Device 1 CPU core 68
+70e00f7e8c2a:295443:295682 [1] NCCL INFO [Proxy Service UDS] Device 1 CPU core 3
+70e00f7e8c2a:295442:295681 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 5
+70e00f7e8c2a:295442:295678 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+70e00f7e8c2a:295442:295678 [0] NCCL INFO 4 coll channels, 4 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+70e00f7e8c2a:295443:295675 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+70e00f7e8c2a:295443:295675 [1] NCCL INFO 4 coll channels, 4 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+70e00f7e8c2a:295442:295678 [0] NCCL INFO CC Off, workFifoBytes 1048576
+70e00f7e8c2a:295442:295678 [0] NCCL INFO ncclCommSplit comm 0x26d569b0 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 5000 parent 0x25496730 splitCount 1 color 2130503744 key 0 - Init COMPLETE
+70e00f7e8c2a:295443:295675 [1] NCCL INFO ncclCommSplit comm 0x210637c0 rank 1 nranks 2 cudaDev 1 nvmlDev 1 busId 6000 parent 0x155a2340 splitCount 1 color 2130503744 key 1 - Init COMPLETE
+70e00f7e8c2a:295442:295678 [0] NCCL INFO Init timings - ncclCommSplit: rank 0 nranks 2 total 0.02 (kernels 0.00, alloc 0.00, bootstrap 0.00, allgathers 0.00, topo 0.01, graphs 0.00, connections 0.01, rest 0.00)
+70e00f7e8c2a:295443:295675 [1] NCCL INFO Init timings - ncclCommSplit: rank 1 nranks 2 total 26.63 (kernels 0.00, alloc 0.00, bootstrap 0.00, allgathers 0.00, topo 0.01, graphs 0.00, connections 0.01, rest 26.61)
+70e00f7e8c2a:295442:295683 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM
+70e00f7e8c2a:295442:295683 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/CUMEM
+70e00f7e8c2a:295442:295683 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/CUMEM
+70e00f7e8c2a:295443:295684 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM
+70e00f7e8c2a:295442:295683 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[1] via P2P/CUMEM
+70e00f7e8c2a:295443:295684 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM
+70e00f7e8c2a:295443:295684 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/CUMEM
+70e00f7e8c2a:295443:295684 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/CUMEM
+70e00f7e8c2a:295442:295683 [0] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+70e00f7e8c2a:295443:295684 [1] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+Parameter Offload - Persistent parameters statistics: param_count = 656, numel = 3085376
+/opt/conda/envs/torch-env/lib/python3.12/site-packages/lightning/pytorch/core/saving.py:363: Skipping 'train_dtype' parameter because it is not possible to safely dump to YAML.
+/opt/conda/envs/torch-env/lib/python3.12/site-packages/lightning/pytorch/core/saving.py:363: Skipping 'inference_dtype' parameter because it is not possible to safely dump to YAML.
+Training: |          | 0/? [00:00<?, ?it/s]Training: |          | 0/? [00:00<?, ?it/s]Epoch 0:   0%|          | 0/25 [00:00<?, ?it/s]/opt/conda/envs/torch-env/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py:929: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+/opt/conda/envs/torch-env/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py:929: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Epoch 0:   4%|▍         | 1/25 [22:33<9:01:27,  0.00it/s]Epoch 0:   4%|▍         | 1/25 [22:33<9:01:27,  0.00it/s, v_num=37, train/loss=0.552, train/avg_timestep=0.675]Epoch 0:   8%|▊         | 2/25 [44:55<8:36:43,  0.00it/s, v_num=37, train/loss=0.552, train/avg_timestep=0.675]Epoch 0:   8%|▊         | 2/25 [44:55<8:36:43,  0.00it/s, v_num=37, train/loss=1.030, train/avg_timestep=0.316]W1005 22:23:22.311000 295349 site-packages/torch/distributed/elastic/agent/server/api.py:723] Received 2 death signal, shutting down workers
+W1005 22:23:22.314000 295349 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 295442 closing signal SIGINT
+W1005 22:23:22.314000 295349 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 295443 closing signal SIGINT
+
+Detected KeyboardInterrupt, attempting graceful shutdown ...
+W1005 22:23:52.316000 295349 site-packages/torch/distributed/elastic/multiprocessing/api.py:919] Unable to shutdown process 295442 via 2, forcefully exiting via 9
+70e00f7e8c2a:295443:295680 [1] NCCL INFO [Service thread] Connection closed by localRank 0
+70e00f7e8c2a:295443:295666 [1] NCCL INFO [Service thread] Connection closed by localRank 0
+W1005 22:23:53.721000 295349 site-packages/torch/distributed/elastic/multiprocessing/api.py:919] Unable to shutdown process 295443 via 2, forcefully exiting via 9
+Traceback (most recent call last):
+  File "/opt/conda/envs/torch-env/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/opt/conda/envs/torch-env/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 357, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/torch-env/lib/python3.12/site-packages/torch/distributed/run.py", line 901, in main
+    run(args)
+  File "/opt/conda/envs/torch-env/lib/python3.12/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/opt/conda/envs/torch-env/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 143, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/torch-env/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 268, in launch_agent
+    result = agent.run()
+             ^^^^^^^^^^^
+  File "/opt/conda/envs/torch-env/lib/python3.12/site-packages/torch/distributed/elastic/metrics/api.py", line 138, in wrapper
+    result = f(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/torch-env/lib/python3.12/site-packages/torch/distributed/elastic/agent/server/api.py", line 715, in run
+    result = self._invoke_run(role)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/torch-env/lib/python3.12/site-packages/torch/distributed/elastic/agent/server/api.py", line 879, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/opt/conda/envs/torch-env/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 84, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 295349 got signal: 2

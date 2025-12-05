@@ -1,9 +1,10 @@
 import torch
 import yaml, os
-from diffusers.pipelines import FluxPipeline
+from diffusers.pipelines import FluxKontextPipeline 
 from typing import List, Union, Optional, Dict, Any, Callable
-from .transformer import tranformer_forward
+# from .transformer import tranformer_forward  # No longer needed, using self.transformer directly
 from .condition import Condition
+# from ..flux1.pipeline_tools import encode_images
 
 from diffusers.pipelines.flux.pipeline_flux import (
     FluxPipelineOutput,
@@ -73,11 +74,12 @@ def seed_everything(seed: int = 42):
 
 @torch.no_grad()
 def generate(
-    pipeline: FluxPipeline,
+    pipeline: FluxKontextPipeline,
     conditions: List[Condition] = None,
     config_path: str = None,
     model_config: Optional[Dict[str, Any]] = {},
     condition_scale: float = 1.0,
+    # default_lora: bool = False,
     **params: dict,
 ):
     model_config = model_config or get_config(config_path).get("model", {})
@@ -135,7 +137,7 @@ def generate(
         batch_size = len(prompt)
     else:
         batch_size = prompt_embeds.shape[0]
-
+    print(">>> execution_device:", self._execution_device, type(self._execution_device))
     device = self._execution_device
 
     lora_scale = (
@@ -160,32 +162,35 @@ def generate(
 
     # 4. Prepare latent variables
     num_channels_latents = self.transformer.config.in_channels // 4
-    latents, latent_image_ids = self.prepare_latents(
-        batch_size * num_images_per_prompt,
-        num_channels_latents,
-        height,
-        width,
-        prompt_embeds.dtype,
-        device,
-        generator,
-        latents,
+    latents, image_latents, latent_ids, image_ids = self.prepare_latents(
+        image=None, 
+        batch_size=batch_size * num_images_per_prompt,
+        num_channels_latents=num_channels_latents,
+        height=height,
+        width=width,
+        dtype=prompt_embeds.dtype,
+        device=device,
+        generator=generator,
+        latents=latents,
     )
 
-    # 4.1. Prepare conditions
-    condition_latents, condition_ids, context_latents, context_ids = ([] for _ in range(4))
-    use_condition = conditions is not None or []
+    latent_image_ids = latent_ids
+
+    # 4.1. Prepare conditions and context (using training approach)
+    use_condition = conditions is not None and len(conditions) > 0
     if use_condition:
-        assert len(conditions) <= 1, "Only one condition is supported for now."
-        for condition in conditions:
-            tokens, ids, context_tokens, context_id = condition.encode(self)
-            condition_latents.append(tokens)  # [batch_size, token_n, token_dim]
-            condition_ids.append(ids)  # [token_n, id_dim(3)]
-            context_latents.append(context_tokens)
-            context_ids.append(context_id)
-        condition_latents = torch.cat(condition_latents, dim=1)
-        condition_ids = torch.cat(condition_ids, dim=0)
-        context_latents = torch.cat(context_latents, dim=1)
-        context_ids = torch.cat(context_ids, dim=0)
+        assert len(conditions) <= 1  # "Only one condition is supported for now."
+        condition = conditions[0]
+
+        from .pipeline_tools import encode_images
+        condition_latents, condition_ids = encode_images(self, condition.condition)
+        context_latents, context_ids = encode_images(self, condition.context)
+        
+        # Concatenate latents and ids as in training
+
+    else:
+        latent_ids = latent_image_ids
+        latent_model_input = latents
 
     # 5. Prepare timesteps
     sigmas = np.linspace(1.0, 1 / num_inference_steps, num_inference_steps)
@@ -215,7 +220,8 @@ def generate(
         for i, t in enumerate(timesteps):
             if self.interrupt:
                 continue
-
+            latent_ids = torch.cat([latent_image_ids, condition_ids, context_ids], dim=0)
+            latent_model_input = torch.cat([latents, condition_latents, context_latents], dim=1)
             # broadcast to batch dimension in a way that's compatible with ONNX/Core ML
             timestep = t.expand(latents.shape[0]).to(latents.dtype)
 
@@ -225,27 +231,23 @@ def generate(
                 guidance = guidance.expand(latents.shape[0])
             else:
                 guidance = None
-            noise_pred = tranformer_forward(
-                self.transformer,
-                model_config=model_config,
-                # Inputs of the condition (new feature)
-                condition_latents=condition_latents if use_condition else None,
-                condition_ids=condition_ids if use_condition else None,
-                # Inputs of the context (new feature)
-                context_latents=context_latents if use_condition else None,
-                context_ids=context_ids if use_condition else None,
-                # Inputs to the original transformer
-                hidden_states=latents,
-                # YiYi notes: divide it by 1000 for now because we scale it by 1000 in the transforme rmodel (we should not keep it but I want to keep the inputs same for the model for testing)
-                timestep=timestep / 1000,
+            # Use the same transformer call as in training
+            transformer_out = self.transformer(
+                hidden_states=latent_model_input,
+                timestep=timestep / 1000,  # Scale down to match training range [0,1] 
                 guidance=guidance,
                 pooled_projections=pooled_prompt_embeds,
                 encoder_hidden_states=prompt_embeds,
                 txt_ids=text_ids,
-                img_ids=latent_image_ids,
+                img_ids=latent_ids,
                 joint_attention_kwargs=self.joint_attention_kwargs,
                 return_dict=False,
-            )[0]
+            )
+            noise_pred = transformer_out[0]
+            
+            # Extract
+            if use_condition:
+                noise_pred = noise_pred[:, :latents.size(1)]
 
             # compute the previous noisy sample x_t -> x_t-1
             latents_dtype = latents.dtype

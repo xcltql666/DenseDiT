@@ -1,0 +1,743 @@
+Rank: 0, World Size: 1
+Config: {'flux_path': '/home/users/astar/ares/qianhang/scratch/chengyou/hugging/Kontext', 'dtype': 'bfloat16', 'model': {'union_cond_attn': True, 'add_cond_attn': False, 'add_cont_attn': False, 'latent_lora': False}, 'train': {'batch_size': 1, 'accumulate_grad_batches': 1, 'dataloader_workers': 1, 'save_interval': 5000, 'sample_interval': 20, 'max_steps': -1, 'gradient_checkpointing': True, 'save_path': 'runs', 'wandb': {'project': 'DenseDiT'}, 'lora_config': {'r': 4, 'lora_alpha': 4, 'init_lora_weights': 'gaussian', 'target_modules': '(.*x_embedder|.*(?<!single_)transformer_blocks\\.[0-9]+\\.norm1\\.linear|.*(?<!single_)transformer_blocks\\.[0-9]+\\.attn\\.to_k|.*(?<!single_)transformer_blocks\\.[0-9]+\\.attn\\.to_q|.*(?<!single_)transformer_blocks\\.[0-9]+\\.attn\\.to_v|.*(?<!single_)transformer_blocks\\.[0-9]+\\.attn\\.to_out\\.0|.*(?<!single_)transformer_blocks\\.[0-9]+\\.ff\\.net\\.2|.*single_transformer_blocks\\.[0-9]+\\.norm\\.linear|.*single_transformer_blocks\\.[0-9]+\\.proj_mlp|.*single_transformer_blocks\\.[0-9]+\\.proj_out|.*single_transformer_blocks\\.[0-9]+\\.attn.to_k|.*single_transformer_blocks\\.[0-9]+\\.attn.to_q|.*single_transformer_blocks\\.[0-9]+\\.attn.to_v|.*single_transformer_blocks\\.[0-9]+\\.attn.to_out)'}, 'optimizer': {'type': 'Prodigy', 'params': {'lr': 1, 'use_bias_correction': True, 'safeguard_warmup': True, 'weight_decay': 0.01}}}}
+Dataset length: 50
+Loading checkpoint shards: 100%|██████████| 2/2 [00:50<00:00, 25.13s/it]
+Loading pipeline components...:  29%|██▊       | 2/7 [00:50<01:45, 21.02s/it]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading checkpoint shards: 100%|██████████| 3/3 [02:06<00:00, 42.20s/it]s/it]
+Loading pipeline components...: 100%|██████████| 7/7 [02:58<00:00, 25.51s/it]
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/logger_connector/logger_connector.py:76: Starting from v1.9.0, `tensorboardX` has been removed as a dependency of the `lightning.pytorch` package, due to potential conflicts with other packages in the ML ecosystem. For this reason, `logger=True` will use `CSVLogger` as the default logger, unless the `tensorboard` or `tensorboardX` packages are found. Please `pip install lightning[extra]` or one of them to enable TensorBoard support by default
+You are using a CUDA device ('NVIDIA H100 80GB HBM3') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/1
+----------------------------------------------------------------------------------------------------
+distributed_backend=nccl
+All distributed processes registered. Starting with 1 processes
+----------------------------------------------------------------------------------------------------
+
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+111 torch.bfloat16
+all_params 608
+self 608
+Using decoupled weight decay
+
+  | Name        | Type                   | Params | Mode
+---------------------------------------------------------------
+0 | transformer | FluxTransformer2DModel | 11.9 B | train
+---------------------------------------------------------------
+11.9 B    Trainable params
+0         Non-trainable params
+11.9 B    Total params
+47,605.633Total estimated model params size (MB)
+1279      Modules in train mode
+0         Modules in eval mode
+/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:433: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=27` in the `DataLoader` to improve performance.
+Epoch 0:   0%|          | 0/50 [00:00<?, ?it/s]
+/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py:929: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "<frozen runpy>", line 198, in _run_module_as_main
+[rank0]:   File "<frozen runpy>", line 88, in _run_code
+[rank0]:   File "/scratch/users/astar/ares/qianhang/chengyou/sx/DenseDiT/DenseDiT_dai_no/src/train/train.py", line 162, in <module>
+[rank0]:     main()
+[rank0]:   File "/scratch/users/astar/ares/qianhang/chengyou/sx/DenseDiT/DenseDiT_dai_no/src/train/train.py", line 158, in main
+[rank0]:     trainer.fit(trainable_model, train_loader)
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/trainer/trainer.py", line 560, in fit
+[rank0]:     call._call_and_handle_interrupt(
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/trainer/call.py", line 48, in _call_and_handle_interrupt
+[rank0]:     return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/strategies/launchers/subprocess_script.py", line 105, in launch
+[rank0]:     return function(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/trainer/trainer.py", line 598, in _fit_impl
+[rank0]:     self._run(model, ckpt_path=ckpt_path)
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/trainer/trainer.py", line 1011, in _run
+[rank0]:     results = self._run_stage()
+[rank0]:               ^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/trainer/trainer.py", line 1055, in _run_stage
+[rank0]:     self.fit_loop.run()
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/loops/fit_loop.py", line 216, in run
+[rank0]:     self.advance()
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/loops/fit_loop.py", line 458, in advance
+[rank0]:     self.epoch_loop.run(self._data_fetcher)
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/loops/training_epoch_loop.py", line 152, in run
+[rank0]:     self.advance(data_fetcher)
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/loops/training_epoch_loop.py", line 348, in advance
+[rank0]:     batch_output = self.automatic_optimization.run(trainer.optimizers[0], batch_idx, kwargs)
+[rank0]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/loops/optimization/automatic.py", line 192, in run
+[rank0]:     self._optimizer_step(batch_idx, closure)
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/loops/optimization/automatic.py", line 270, in _optimizer_step
+[rank0]:     call._call_lightning_module_hook(
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/trainer/call.py", line 177, in _call_lightning_module_hook
+[rank0]:     output = fn(*args, **kwargs)
+[rank0]:              ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/core/module.py", line 1366, in optimizer_step
+[rank0]:     optimizer.step(closure=optimizer_closure)
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/core/optimizer.py", line 154, in step
+[rank0]:     step_output = self._strategy.optimizer_step(self._optimizer, closure, **kwargs)
+[rank0]:                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/strategies/ddp.py", line 273, in optimizer_step
+[rank0]:     optimizer_output = super().optimizer_step(optimizer, closure, model, **kwargs)
+[rank0]:                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/strategies/strategy.py", line 239, in optimizer_step
+[rank0]:     return self.precision_plugin.optimizer_step(optimizer, model=model, closure=closure, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/plugins/precision/precision.py", line 123, in optimizer_step
+[rank0]:     return optimizer.step(closure=closure, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/optim/optimizer.py", line 516, in wrapper
+[rank0]:     out = func(*args, **kwargs)
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/prodigyopt/prodigy.py", line 110, in step
+[rank0]:     loss = closure()
+[rank0]:            ^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/plugins/precision/precision.py", line 109, in _wrap_closure
+[rank0]:     closure_result = closure()
+[rank0]:                      ^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/loops/optimization/automatic.py", line 146, in __call__
+[rank0]:     self._result = self.closure(*args, **kwargs)
+[rank0]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/loops/optimization/automatic.py", line 140, in closure
+[rank0]:     self._backward_fn(step_output.closure_loss)
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/loops/optimization/automatic.py", line 241, in backward_fn
+[rank0]:     call._call_strategy_hook(self.trainer, "backward", loss, optimizer)
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/trainer/call.py", line 329, in _call_strategy_hook
+[rank0]:     output = fn(*args, **kwargs)
+[rank0]:              ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/strategies/strategy.py", line 213, in backward
+[rank0]:     self.precision_plugin.backward(closure_loss, self.lightning_module, optimizer, *args, **kwargs)
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/plugins/precision/precision.py", line 73, in backward
+[rank0]:     model.backward(tensor, *args, **kwargs)
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/core/module.py", line 1135, in backward
+[rank0]:     loss.backward(*args, **kwargs)
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/_tensor.py", line 647, in backward
+[rank0]:     torch.autograd.backward(
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/autograd/__init__.py", line 354, in backward
+[rank0]:     _engine_run_backward(
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/autograd/graph.py", line 829, in _engine_run_backward
+[rank0]:     return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/autograd/function.py", line 311, in apply
+[rank0]:     return user_fn(self, *args)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/utils/checkpoint.py", line 319, in backward
+[rank0]:     torch.autograd.backward(outputs_with_grad, args_with_grad)
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/autograd/__init__.py", line 354, in backward
+[rank0]:     _engine_run_backward(
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/autograd/graph.py", line 829, in _engine_run_backward
+[rank0]:     return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 72.00 MiB. GPU 0 has a total capacity of 79.10 GiB of which 65.75 MiB is free. Including non-PyTorch memory, this process has 79.02 GiB memory in use. Of the allocated memory 76.00 GiB is allocated by PyTorch, and 1.74 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

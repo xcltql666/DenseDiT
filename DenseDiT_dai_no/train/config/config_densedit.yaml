@@ -1,4 +1,4 @@
-flux_path: "black-forest-labs/FLUX.1-dev"
+flux_path: "/home/users/astar/ares/qianhang/scratch/chengyou/hugging/Kontext"
 dtype: "bfloat16"
 
 model:
@@ -10,9 +10,9 @@ model:
 train:
   batch_size: 1
   accumulate_grad_batches: 1
-  dataloader_workers: 1
+  dataloader_workers: 4
   save_interval: 5000
-  sample_interval: 5000
+  sample_interval: 20
   max_steps: -1
   gradient_checkpointing: true
   save_path: "runs"

@@ -1,0 +1,11 @@
+{"time":"2025-10-03T16:34:26.603119444+08:00","level":"INFO","msg":"stream: starting","core version":"0.22.1"}
+{"time":"2025-10-03T16:34:27.137164647+08:00","level":"INFO","msg":"stream: created new stream","id":"npaeiudd"}
+{"time":"2025-10-03T16:34:27.137598962+08:00","level":"INFO","msg":"handler: started","stream_id":"npaeiudd"}
+{"time":"2025-10-03T16:34:27.140455797+08:00","level":"INFO","msg":"stream: started","id":"npaeiudd"}
+{"time":"2025-10-03T16:34:27.14066653+08:00","level":"INFO","msg":"writer: started","stream_id":"npaeiudd"}
+{"time":"2025-10-03T16:34:27.141145847+08:00","level":"INFO","msg":"sender: started","stream_id":"npaeiudd"}
+{"time":"2025-10-03T16:40:20.706726262+08:00","level":"INFO","msg":"stream: closing","id":"npaeiudd"}
+{"time":"2025-10-03T16:40:22.11991808+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-10-03T16:40:22.460032118+08:00","level":"INFO","msg":"handler: closed","stream_id":"npaeiudd"}
+{"time":"2025-10-03T16:40:22.460507615+08:00","level":"INFO","msg":"sender: closed","stream_id":"npaeiudd"}
+{"time":"2025-10-03T16:40:22.460520475+08:00","level":"INFO","msg":"stream: closed","id":"npaeiudd"}

@@ -1,0 +1,106 @@
+Rank: 0, World Size: 1
+Config: {'flux_path': '/home/users/astar/ares/qianhang/scratch/chengyou/hugging/Kontext', 'dtype': 'bfloat16', 'model': {'union_cond_attn': True, 'add_cond_attn': False, 'add_cont_attn': False, 'latent_lora': False}, 'train': {'batch_size': 1, 'accumulate_grad_batches': 1, 'dataloader_workers': 1, 'save_interval': 5000, 'sample_interval': 20, 'max_steps': -1, 'gradient_checkpointing': True, 'save_path': 'runs', 'wandb': {'project': 'DenseDiT'}, 'lora_config': {'r': 4, 'lora_alpha': 4, 'init_lora_weights': 'gaussian', 'target_modules': '(.*x_embedder|.*(?<!single_)transformer_blocks\\.[0-9]+\\.norm1\\.linear|.*(?<!single_)transformer_blocks\\.[0-9]+\\.attn\\.to_k|.*(?<!single_)transformer_blocks\\.[0-9]+\\.attn\\.to_q|.*(?<!single_)transformer_blocks\\.[0-9]+\\.attn\\.to_v|.*(?<!single_)transformer_blocks\\.[0-9]+\\.attn\\.to_out\\.0|.*(?<!single_)transformer_blocks\\.[0-9]+\\.ff\\.net\\.2|.*single_transformer_blocks\\.[0-9]+\\.norm\\.linear|.*single_transformer_blocks\\.[0-9]+\\.proj_mlp|.*single_transformer_blocks\\.[0-9]+\\.proj_out|.*single_transformer_blocks\\.[0-9]+\\.attn.to_k|.*single_transformer_blocks\\.[0-9]+\\.attn.to_q|.*single_transformer_blocks\\.[0-9]+\\.attn.to_v|.*single_transformer_blocks\\.[0-9]+\\.attn.to_out)'}, 'optimizer': {'type': 'Prodigy', 'params': {'lr': 1, 'use_bias_correction': True, 'safeguard_warmup': True, 'weight_decay': 0.01}}}}
+Dataset length: 50
+Loading checkpoint shards: 100%|██████████| 2/2 [01:21<00:00, 40.77s/it]it/s]
+Loading pipeline components...:  71%|███████▏  | 5/7 [01:23<00:33, 16.63s/it]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading checkpoint shards: 100%|██████████| 3/3 [02:54<00:00, 58.09s/it]s/it]
+Loading pipeline components...: 100%|██████████| 7/7 [04:18<00:00, 36.91s/it]
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/logger_connector/logger_connector.py:76: Starting from v1.9.0, `tensorboardX` has been removed as a dependency of the `lightning.pytorch` package, due to potential conflicts with other packages in the ML ecosystem. For this reason, `logger=True` will use `CSVLogger` as the default logger, unless the `tensorboard` or `tensorboardX` packages are found. Please `pip install lightning[extra]` or one of them to enable TensorBoard support by default
+You are using a CUDA device ('NVIDIA H100 80GB HBM3') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/1
+----------------------------------------------------------------------------------------------------
+distributed_backend=nccl
+All distributed processes registered. Starting with 1 processes
+----------------------------------------------------------------------------------------------------
+
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+all_params 608
+self 608
+Using decoupled weight decay
+
+  | Name        | Type                   | Params | Mode
+---------------------------------------------------------------
+0 | transformer | FluxTransformer2DModel | 11.9 B | train
+---------------------------------------------------------------
+11.9 B    Trainable params
+0         Non-trainable params
+11.9 B    Total params
+47,605.633Total estimated model params size (MB)
+1279      Modules in train mode
+0         Modules in eval mode
+/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:433: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=27` in the `DataLoader` to improve performance.
+Epoch 0:   0%|          | 0/50 [00:00<?, ?it/s]
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "<frozen runpy>", line 198, in _run_module_as_main
+[rank0]:   File "<frozen runpy>", line 88, in _run_code
+[rank0]:   File "/scratch/users/astar/ares/qianhang/chengyou/sx/DenseDiT/DenseDiT_dai_no/src/train/train.py", line 162, in <module>
+[rank0]:     main()
+[rank0]:   File "/scratch/users/astar/ares/qianhang/chengyou/sx/DenseDiT/DenseDiT_dai_no/src/train/train.py", line 158, in main
+[rank0]:     trainer.fit(trainable_model, train_loader)
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/trainer/trainer.py", line 560, in fit
+[rank0]:     call._call_and_handle_interrupt(
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/trainer/call.py", line 48, in _call_and_handle_interrupt
+[rank0]:     return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/strategies/launchers/subprocess_script.py", line 105, in launch
+[rank0]:     return function(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/trainer/trainer.py", line 598, in _fit_impl
+[rank0]:     self._run(model, ckpt_path=ckpt_path)
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/trainer/trainer.py", line 1011, in _run
+[rank0]:     results = self._run_stage()
+[rank0]:               ^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/trainer/trainer.py", line 1055, in _run_stage
+[rank0]:     self.fit_loop.run()
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/loops/fit_loop.py", line 216, in run
+[rank0]:     self.advance()
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/loops/fit_loop.py", line 458, in advance
+[rank0]:     self.epoch_loop.run(self._data_fetcher)
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/loops/training_epoch_loop.py", line 152, in run
+[rank0]:     self.advance(data_fetcher)
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/loops/training_epoch_loop.py", line 310, in advance
+[rank0]:     batch, _, __ = next(data_fetcher)
+[rank0]:                    ^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/loops/fetchers.py", line 134, in __next__
+[rank0]:     batch = super().__next__()
+[rank0]:             ^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/loops/fetchers.py", line 61, in __next__
+[rank0]:     batch = next(self.iterator)
+[rank0]:             ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/utilities/combined_loader.py", line 341, in __next__
+[rank0]:     out = next(self._iterator)
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/lightning/pytorch/utilities/combined_loader.py", line 78, in __next__
+[rank0]:     out[i] = next(self.iterators[i])
+[rank0]:              ^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 734, in __next__
+[rank0]:     data = self._next_data()
+[rank0]:            ^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1516, in _next_data
+[rank0]:     return self._process_data(data, worker_id)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1551, in _process_data
+[rank0]:     data.reraise()
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/_utils.py", line 769, in reraise
+[rank0]:     raise exception
+[rank0]: FileNotFoundError: Caught FileNotFoundError in DataLoader worker process 0.
+[rank0]: Original Traceback (most recent call last):
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/utils/data/_utils/worker.py", line 349, in _worker_loop
+[rank0]:     data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+[rank0]:     data = [self.dataset[idx] for idx in possibly_batched_index]
+[rank0]:             ~~~~~~~~~~~~^^^^^
+[rank0]:   File "/scratch/users/astar/ares/qianhang/chengyou/sx/DenseDiT/DenseDiT_dai_no/src/train/data.py", line 50, in __getitem__
+[rank0]:     image, condition_img, context_image = self.load_images(self.image_dir, self.condition_dir, file_name, self.context_file)
+[rank0]:                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/scratch/users/astar/ares/qianhang/chengyou/sx/DenseDiT/DenseDiT_dai_no/src/train/data.py", line 38, in load_images
+[rank0]:     condition_image = Image.open(condition_path).convert("RGB")
+[rank0]:                       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/PIL/Image.py", line 3469, in open
+[rank0]:     fp = builtins.open(filename, "rb")
+[rank0]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: FileNotFoundError: [Errno 2] No such file or directory: '/scratch/users/astar/ares/qianhang/chengyou/sx/sx_data/rectify/pairs_pf/wild-360_3ae09TtHtbE_2_5_pair_left_pf.jpg'

@@ -1,0 +1,59 @@
+{
+  "os":  "Linux-5.15.0-1076-nvidia-x86_64-with-glibc2.35",
+  "python":  "CPython 3.12.11",
+  "startedAt":  "2025-10-03T15:34:08.440208Z",
+  "program":  "-m src.train.train",
+  "git":  {
+    "remote":  "https://github.com/xcltql666/DenseDiT.git",
+    "commit":  "057cf9e9761e727314692ed6e4d1495b1c6c936f"
+  },
+  "email":  "shenxin6516692@gmail.com",
+  "root":  "/scratch/users/astar/ares/qianhang/chengyou/sx/DenseDiT/DenseDiT_dai_no",
+  "host":  "a2ap-dgx037",
+  "executable":  "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/bin/python3.12",
+  "cpu_count":  112,
+  "cpu_count_logical":  224,
+  "gpu":  "NVIDIA H100 80GB HBM3",
+  "gpu_count":  4,
+  "disk":  {
+    "/":  {
+      "total":  "1888556142592",
+      "used":  "61203828736"
+    }
+  },
+  "memory":  {
+    "total":  "2164194324480"
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA H100 80GB HBM3",
+      "memoryTotal":  "85520809984",
+      "cudaCores":  16896,
+      "architecture":  "Hopper",
+      "uuid":  "GPU-19f01f04-25d5-67df-2412-49ff119c0572"
+    },
+    {
+      "name":  "NVIDIA H100 80GB HBM3",
+      "memoryTotal":  "85520809984",
+      "cudaCores":  16896,
+      "architecture":  "Hopper",
+      "uuid":  "GPU-4232c2c0-38aa-45db-2b42-a6f7460b3f42"
+    },
+    {
+      "name":  "NVIDIA H100 80GB HBM3",
+      "memoryTotal":  "85520809984",
+      "cudaCores":  16896,
+      "architecture":  "Hopper",
+      "uuid":  "GPU-05162bf3-d117-61bf-f602-0f621b02eea8"
+    },
+    {
+      "name":  "NVIDIA H100 80GB HBM3",
+      "memoryTotal":  "85520809984",
+      "cudaCores":  16896,
+      "architecture":  "Hopper",
+      "uuid":  "GPU-6d4a066e-7fc2-2ff4-1ee3-beff41ba4b1c"
+    }
+  ],
+  "cudaVersion":  "12.4",
+  "writerId":  "3supuetfbv4unnycd5g9ozl5u0ietv5k"
+}

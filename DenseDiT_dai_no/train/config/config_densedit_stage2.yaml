@@ -1,0 +1,90 @@
+# ==================== 模型配置 ====================
+model:
+  flux_path: "/root/siton-data-51d3ce9aba3246f88f64ea65f79d5133/models/Flux-Kontext"
+  model_dtype: "float32"      # 模型权重精度: float32, bfloat16, float16
+  mixed_precision: "bfloat16"  # 训练混合精度: float32, bfloat16, float16
+  use_lora: false
+  train_transformer: true
+
+# ==================== 训练配置 ====================
+train:
+  # 设备配置
+  allow_tf32: true   # 允许在 Ampere GPU 上使用 TF32（提升速度）
+
+  # 数据配置
+  batch_size: 1
+  accumulate_grad_batches: 4
+  dataloader_workers: 8
+  image_size: [512, 512]  # 输入图像尺寸（宽, 高）
+  
+  # 数据集路径（取消注释并配置）
+  image_dir: "/root/siton-data-51d3ce9aba3246f88f64ea65f79d5133/rectify/pairs"
+  condition_dir: "/root/siton-data-51d3ce9aba3246f88f64ea65f79d5133/rectify/pairs_pf"
+  context_file: "/root/siton-data-51d3ce9aba3246f88f64ea65f79d5133/rectify/pairs"
+  description_file: "/root/siton-data-51d3ce9aba3246f88f64ea65f79d5133/rectify/image_descriptions.txt"
+  
+  # 训练控制
+  max_steps: -1
+  max_epochs: -1
+  gradient_checkpointing: true
+  gradient_clip_val: 1.0
+  
+  # 优化器配置
+  optimizer:
+    type: "AdamW"
+    params:
+      lr: 1.0e-4
+      betas: [0.9, 0.999]
+      eps: 1.0e-8
+    weight_decay: 0.01
+  
+  # 日志和保存
+  save_path: "./output"
+  save_every_n_steps: 1000
+  log_every_n_steps: 5
+  save_interval: 5000
+  sample_interval: 20
+  
+  # WandB 配置
+  wandb:
+    enabled: true
+    project: "DenseDiT"
+
+# ==================== DeepSpeed 配置 ====================
+deepspeed:
+  # ZeRO 优化阶段：2 或 3
+  # - Stage 2: 更快，但需要更多显存
+  # - Stage 3: 更省显存，但稍慢
+  zero_stage: 3
+  
+  # CPU Offload 配置（用于节省显存）
+  # - "none": 全部在 GPU（最快）
+  # - "optimizer": 只 offload 优化器状态（平衡）
+  # - "all": offload 优化器和参数（最省显存）
+  offload: "none"  # 选项: none, optimizer, all
+  
+  # 性能配置
+  overlap_comm: true              # 通信和计算重叠
+  contiguous_gradients: true      # 连续梯度内存
+  
+  # 调试配置
+  wall_clock_breakdown: false     # 设为 true 可看详细性能分析
+  steps_per_print: 10
+
+# ==================== 预设配置（快速选择）====================
+# 取消下面的注释来使用预设配置
+
+# 预设1: 最大速度（需要大显存）
+# deepspeed:
+#   zero_stage: 2
+#   offload: "none"
+
+# 预设2: 平衡模式（推荐）
+# deepspeed:
+#   zero_stage: 3
+#   offload: "none"
+
+# 预设3: 最省显存（速度较慢）
+# deepspeed:
+#   zero_stage: 3
+#   offload: "all"

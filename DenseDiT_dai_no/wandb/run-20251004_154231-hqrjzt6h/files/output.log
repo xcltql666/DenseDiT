@@ -1,0 +1,38 @@
+Rank: 0, World Size: 4
+Config: {'flux_path': '/home/users/astar/ares/qianhang/scratch/chengyou/hugging/Kontext', 'dtype': 'bfloat16', 'train': {'batch_size': 1, 'accumulate_grad_batches': 1, 'dataloader_workers': 4, 'save_interval': 5000, 'sample_interval': 20, 'max_steps': -1, 'gradient_checkpointing': True, 'save_path': './output', 'optimizer': {'type': 'AdamW', 'params': {'lr': 0.0001, 'betas': [0.9, 0.999], 'eps': 1e-08, 'weight_decay': 0.01}}, 'save_every_n_steps': 1000, 'log_every_n_steps': 50, 'wandb': {'project': 'DenseDiT', 'enabled': True}}, 'model': {'use_lora': False, 'train_transformer': True}}
+Dataset length: 50
+Loading checkpoint shards: 100%|██████████| 2/2 [00:40<00:00, 20.07s/it]
+Loading pipeline components...:  29%|██▊       | 2/7 [00:40<01:23, 16.63s/it]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading checkpoint shards: 100%|██████████| 3/3 [02:23<00:00, 47.72s/it]s/it]
+Loading pipeline components...: 100%|██████████| 7/7 [03:04<00:00, 26.37s/it]
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/scratch/users/astar/ares/qianhang/chengyou/sx/DenseDiT/DenseDiT_dai_no/src/train/train.py", line 222, in <module>
+    main()
+  File "/scratch/users/astar/ares/qianhang/chengyou/sx/DenseDiT/DenseDiT_dai_no/src/train/train.py", line 130, in main
+    trainable_model = DenseDiTModel(
+                      ^^^^^^^^^^^^^^
+  File "/scratch/users/astar/ares/qianhang/chengyou/sx/DenseDiT/DenseDiT_dai_no/src/train/model.py", line 32, in __init__
+    FluxKontextPipeline.from_pretrained(flux_pipe_id).to(dtype=dtype).to(device)
+  File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/diffusers/pipelines/pipeline_utils.py", line 541, in to
+    module.to(device, dtype)
+  File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/diffusers/models/modeling_utils.py", line 1424, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1369, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/nn/modules/module.py", line 928, in _apply
+    module._apply(fn)
+  File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/nn/modules/module.py", line 928, in _apply
+    module._apply(fn)
+  File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/nn/modules/module.py", line 928, in _apply
+    module._apply(fn)
+  File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/nn/modules/module.py", line 955, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/home/users/astar/ares/qianhang/.conda/envs/omini_sx/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1355, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 72.00 MiB. GPU 0 has a total capacity of 79.10 GiB of which 31.06 MiB is free. Process 3947603 has 17.09 GiB memory in use. Process 3947601 has 17.93 GiB memory in use. Including non-PyTorch memory, this process has 25.74 GiB memory in use. Process 3947602 has 18.28 GiB memory in use. Of the allocated memory 25.23 GiB is allocated by PyTorch, and 5.47 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

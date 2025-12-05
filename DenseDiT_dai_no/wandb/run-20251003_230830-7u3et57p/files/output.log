@@ -1,0 +1,7 @@
+Rank: 0, World Size: 4
+Config: {'flux_path': '/home/users/astar/ares/qianhang/scratch/chengyou/hugging/Kontext', 'dtype': 'bfloat16', 'train': {'batch_size': 4, 'accumulate_grad_batches': 4, 'dataloader_workers': 8, 'max_steps': 100000, 'max_epochs': -1, 'gradient_clip_val': 0.5, 'gradient_checkpointing': True, 'optimizer': {'type': 'AdamW', 'params': {'lr': 0.0001, 'betas': [0.9, 0.999], 'eps': 1e-08, 'weight_decay': 0.01}}, 'save_path': './output', 'save_every_n_steps': 1000, 'log_every_n_steps': 50, 'wandb': {'project': 'DenseDiT', 'enabled': True}}, 'model': {'use_lora': False, 'train_transformer': True}}
+Dataset length: 50
+Loading checkpoint shards: 100%|██████████| 3/3 [02:12<00:00, 44.22s/it]
+Loading pipeline components...:  14%|█▍        | 1/7 [02:12<13:16, 132.73s/it]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading pipeline components...:  43%|████▎     | 3/7 [02:13<02:18, 34.53s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]

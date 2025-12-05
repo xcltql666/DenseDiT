@@ -1,0 +1,84 @@
+_wandb:
+    value:
+        cli_version: 0.22.1
+        e:
+            dtad84nwkchtudkznuxomjcvfcyvh7ir:
+                cpu_count: 112
+                cpu_count_logical: 224
+                cudaVersion: "12.4"
+                disk:
+                    /:
+                        total: "1888556142592"
+                        used: "42863136768"
+                email: shenxin6516692@gmail.com
+                executable: /home/users/astar/ares/qianhang/.conda/envs/omini_sx/bin/python3.12
+                git:
+                    commit: 057cf9e9761e727314692ed6e4d1495b1c6c936f
+                    remote: https://github.com/xcltql666/DenseDiT.git
+                gpu: NVIDIA H100 80GB HBM3
+                gpu_count: 4
+                gpu_nvidia:
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H100 80GB HBM3
+                      uuid: GPU-e44fd604-05f2-d1cd-0de7-565392509a0e
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H100 80GB HBM3
+                      uuid: GPU-51b93efd-6330-4f23-85ee-491d34a198c7
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H100 80GB HBM3
+                      uuid: GPU-d2fa7082-32ad-bcd0-697b-b7258ba359b8
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H100 80GB HBM3
+                      uuid: GPU-1bfe968f-76b0-a96b-cbb3-5c3b90d86db2
+                host: a2ap-dgx035
+                memory:
+                    total: "2164194336768"
+                os: Linux-5.15.0-1076-nvidia-x86_64-with-glibc2.35
+                program: -m src.train.train
+                python: CPython 3.12.11
+                root: /scratch/users/astar/ares/qianhang/chengyou/sx/DenseDiT/DenseDiT_dai_no
+                startedAt: "2025-10-04T08:29:49.718150Z"
+                writerId: dtad84nwkchtudkznuxomjcvfcyvh7ir
+        m: []
+        python_version: 3.12.11
+        t:
+            "1":
+                - 1
+                - 9
+                - 11
+                - 41
+                - 49
+                - 71
+                - 83
+                - 98
+                - 103
+                - 105
+                - 106
+            "2":
+                - 1
+                - 9
+                - 11
+                - 41
+                - 49
+                - 71
+                - 83
+                - 98
+                - 103
+                - 105
+                - 106
+            "3":
+                - 13
+                - 16
+            "4": 3.12.11
+            "5": 0.22.1
+            "6": 4.56.2
+            "12": 0.22.1
+            "13": linux-x86_64
