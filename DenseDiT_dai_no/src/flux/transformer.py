@@ -137,6 +137,17 @@ def tranformer_forward(
         )
         img_ids = img_ids[0]
 
+    # Virtual Causal Positional Embedding (VCPE): when the demonstration branch
+    # is active, shift the query and noise streams to the subsequent virtual
+    # temporal step t=1 while the demonstration stream stays at the preceding
+    # step t=0, establishing a forward causal sequence that prevents spatial
+    # collision between the demonstration and the query/noise tokens.
+    if use_condition:
+        img_ids = img_ids.clone()
+        img_ids[:, 0] = img_ids[:, 0] + 1
+        condition_ids = condition_ids.clone()
+        condition_ids[:, 0] = condition_ids[:, 0] + 1
+
     ids = torch.cat((txt_ids, img_ids), dim=0)
     image_rotary_emb = self.pos_embed(ids)
     if use_condition:
